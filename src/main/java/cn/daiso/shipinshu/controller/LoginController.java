@@ -26,6 +26,7 @@ public class LoginController {
         String password = loginData.get("password");
 
 //        这是一次push测试
+//        测试git冲突
 
         try {
             Authentication authentication = authenticationManager.authenticate(
