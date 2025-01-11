@@ -25,6 +25,8 @@ public class LoginController {
         String username = loginData.get("username");
         String password = loginData.get("password");
 
+//        这是一次push测试
+
         try {
             Authentication authentication = authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(username, password)
