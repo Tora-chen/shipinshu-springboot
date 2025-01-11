@@ -54,6 +54,8 @@ public class SecurityConfig {
                         .requestMatchers("api/lectures/my").hasRole("STUDENT")
                         .requestMatchers("/api/user-collection").hasRole("STUDENT")
                         .requestMatchers("/api/user-collection/{LectureId}").hasRole("STUDENT")
+                        .requestMatchers("/api/user-collection/my").hasRole("STUDENT")
+
                         .anyRequest().authenticated()
                 )
 //                .formLogin(AbstractAuthenticationFilterConfigurer::permitAll)

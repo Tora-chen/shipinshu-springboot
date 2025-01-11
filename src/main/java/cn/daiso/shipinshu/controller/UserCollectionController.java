@@ -1,13 +1,17 @@
 package cn.daiso.shipinshu.controller;
 
+import cn.daiso.shipinshu.entity.Lecture;
 import cn.daiso.shipinshu.entity.UserCollection;
 import cn.daiso.shipinshu.repository.UserCollectionRepository;
 import cn.daiso.shipinshu.repository.UserRepository;
 import cn.daiso.shipinshu.util.SecurityUtil;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import cn.daiso.shipinshu.repository.LectureRepository;
 
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/user-collection")
@@ -15,10 +19,12 @@ public class UserCollectionController {
 
     private final UserRepository userRepository;
     private final UserCollectionRepository userCollectionRepository;
+    private final LectureRepository lectureRepository;
 
-    public UserCollectionController(UserRepository userRepository, UserCollectionRepository userCollectionRepository) {
+    public UserCollectionController(UserRepository userRepository, UserCollectionRepository userCollectionRepository, cn.daiso.shipinshu.repository.LectureRepository lectureRepository) {
         this.userRepository = userRepository;
         this.userCollectionRepository = userCollectionRepository;
+        this.lectureRepository = lectureRepository;
     }
 
     // 收藏课程
@@ -52,5 +58,25 @@ public class UserCollectionController {
         // 删除收藏记录
         userCollectionRepository.delete(userCollection);
         return ResponseEntity.ok("Lecture canceled successfully!");
+    }
+
+    // 查看我的收藏
+    @GetMapping("/my")
+    public ResponseEntity<List<Lecture>> myCollection() {
+        Long userId = SecurityUtil.getCurrentUserId(userRepository);
+
+        // 查找我的收藏
+        List<UserCollection> userCollection = userCollectionRepository.findByUserId(userId);
+        if (userCollection.isEmpty()) {
+            return ResponseEntity.ok(null);
+        }
+
+        // userCollection中只有Long类型的lectureId，需要在Lecture表中查找收藏的课程
+        List<Long> lectureIds = userCollection.stream()
+                .map(UserCollection::getLectureId)
+                .collect(Collectors.toList());
+        List<Lecture> lectures = lectureRepository.findByIdIn(lectureIds);
+
+        return ResponseEntity.ok(lectures);
     }
 }
