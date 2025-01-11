@@ -18,4 +18,6 @@ public class Lecture {
     @Column(name="description",nullable = false, columnDefinition = "TEXT")
     private String description;
 
+    @Column(name="uploader_id", nullable = false)
+    private  Integer uploaderId;
 }
