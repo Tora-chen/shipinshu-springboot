@@ -25,6 +25,7 @@ public class LoginController {
         String username = loginData.get("username");
         String password = loginData.get("password");
 
+//        git 冲突测试yang
         try {
             Authentication authentication = authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(username, password)
