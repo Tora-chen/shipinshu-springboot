@@ -50,6 +50,7 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests(authorize -> authorize
                         .requestMatchers("/home", "/csrf", "/api/login", "/api/lecture/list").permitAll()
+                        .requestMatchers("/api/lectures").hasRole("STUDENT")
                         .anyRequest().authenticated()
                 )
 //                .formLogin(AbstractAuthenticationFilterConfigurer::permitAll)
