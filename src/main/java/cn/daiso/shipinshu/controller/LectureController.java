@@ -3,6 +3,7 @@ package cn.daiso.shipinshu.controller;
 import cn.daiso.shipinshu.entity.Lecture;
 import cn.daiso.shipinshu.repository.LectureRepository;
 import cn.daiso.shipinshu.repository.UserRepository;
+import cn.daiso.shipinshu.util.SecurityUtil;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -70,6 +71,23 @@ public class LectureController {
         // 删除课程
         lectureRepository.deleteById(id);
         return ResponseEntity.ok("Lecture deleted successfully!");
+    }
+
+    // 修改课程
+    @PutMapping("/{lectureId}")
+    public ResponseEntity<String> updateLecture(@PathVariable("lectureId") Long id, @RequestBody Map<String, String> payload) {
+        Long userId = SecurityUtil.getCurrentUserId(userRepository);
+        Lecture lecture = lectureRepository.findById(id).orElse(null);
+        if (userId != lecture.getUploaderId()) {
+            return ResponseEntity.badRequest().body("You are not the uploader of this lecture!");
+        }
+        // 是上传者，可以进行对课程的修改
+        Lecture updateLecture = new Lecture();
+        updateLecture.setTitle(payload.get("title"));
+        updateLecture.setDescription(payload.get("description"));
+        updateLecture.setUploaderId(userId);
+        lectureRepository.save(updateLecture);
+        return ResponseEntity.ok("Lecture updated successfully!");
     }
 
     // 查看我上传的课程
