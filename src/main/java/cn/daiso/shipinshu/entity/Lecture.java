@@ -19,5 +19,5 @@ public class Lecture {
     private String description;
 
     @Column(name="uploader_id", nullable = false)
-    private  Integer uploaderId;
+    private  Long uploaderId;
 }
