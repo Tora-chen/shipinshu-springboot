@@ -51,6 +51,7 @@ public class SecurityConfig {
         http.authorizeHttpRequests(authorize -> authorize
                         .requestMatchers("/home", "/csrf", "/api/login", "/api/lecture/list").permitAll()
                         .requestMatchers("/api/lectures").hasRole("STUDENT")
+                        .requestMatchers("api/lectures/my").hasRole("STUDENT")
                         .anyRequest().authenticated()
                 )
 //                .formLogin(AbstractAuthenticationFilterConfigurer::permitAll)
