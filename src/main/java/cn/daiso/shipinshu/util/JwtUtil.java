@@ -8,7 +8,7 @@ import java.util.Date;
 
 public class JwtUtil {
 
-    private static final String SECRET_KEY = "ShipinshuShipinshuShipinshu"; // 替换为安全的密钥
+    private static final String SECRET_KEY = "ShipinshuShipinshuShipinshuShipinshu"; // 替换为安全的密钥
     private static final long EXPIRATION_TIME = 86400000; // 1 天 (以毫秒为单位)
 
     // 生成 JWT
