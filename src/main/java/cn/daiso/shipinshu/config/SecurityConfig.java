@@ -53,7 +53,7 @@ public class SecurityConfig {
                         .requestMatchers("/api/lectures").hasRole("STUDENT")
                         .requestMatchers("api/lectures/my").hasRole("STUDENT")
                         .requestMatchers("api/lectures/{lectureId}").hasRole("STUDENT")
-
+                        .requestMatchers("api/lectures/{lectureId}/videos").hasRole("STUDENT")
                         .requestMatchers("/api/user-collection").hasRole("STUDENT")
                         .requestMatchers("/api/user-collection/{LectureId}").hasRole("STUDENT")
                         .requestMatchers("/api/user-collection/my").hasRole("STUDENT")
