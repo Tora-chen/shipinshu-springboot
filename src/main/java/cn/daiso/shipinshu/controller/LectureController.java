@@ -1,13 +1,17 @@
 package cn.daiso.shipinshu.controller;
 
 import cn.daiso.shipinshu.entity.Lecture;
+import cn.daiso.shipinshu.entity.Video;
 import cn.daiso.shipinshu.repository.LectureRepository;
 import cn.daiso.shipinshu.repository.UserRepository;
+import cn.daiso.shipinshu.repository.VideoRepository;
+import cn.daiso.shipinshu.util.SecurityUtil;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -15,10 +19,12 @@ import java.util.Map;
 public class LectureController {
     private final UserRepository userRepository;
     private final LectureRepository lectureRepository;
+    private final VideoRepository videoRepository;
 
-    public LectureController(UserRepository userRepository, LectureRepository lectureRepository) {
+    public LectureController(UserRepository userRepository, LectureRepository lectureRepository,VideoRepository videoRepository) {
         this.userRepository = userRepository;
         this.lectureRepository = lectureRepository;
+        this.videoRepository = videoRepository;
     }
 
     // 添加课程
@@ -72,6 +78,23 @@ public class LectureController {
         return ResponseEntity.ok("Lecture deleted successfully!");
     }
 
+    // 修改课程
+    @PutMapping("/{lectureId}")
+    public ResponseEntity<String> updateLecture(@PathVariable("lectureId") Long id, @RequestBody Map<String, String> payload) {
+        Long userId = SecurityUtil.getCurrentUserId(userRepository);
+        Lecture lecture = lectureRepository.findById(id).orElse(null);
+        if (userId != lecture.getUploaderId()) {
+            return ResponseEntity.badRequest().body("You are not the uploader of this lecture!");
+        }
+        // 是上传者，可以进行对课程的修改
+        Lecture updateLecture = new Lecture();
+        updateLecture.setTitle(payload.get("title"));
+        updateLecture.setDescription(payload.get("description"));
+        updateLecture.setUploaderId(userId);
+        lectureRepository.save(updateLecture);
+        return ResponseEntity.ok("Lecture updated successfully!");
+    }
+
     // 查看我上传的课程
     @GetMapping("/my")
     public ResponseEntity<?> findMyLectures() {
@@ -85,5 +108,17 @@ public class LectureController {
         // 查找我上传的课程
         return ResponseEntity.ok(lectureRepository.findByUploaderId(userId));
     }
-//    111111111111111
+
+    // 获取给定课程下所有视频
+    @GetMapping("/{lectureId}/videos")
+    public ResponseEntity<?> findCertainLectureVideo(@PathVariable("lectureId") Long lectureId){
+        // 找到对应的视频id
+        List<Video> videos = videoRepository.getVideosByLectureId(lectureId);
+
+        // 将视频信息上传
+        return ResponseEntity.ok(videos);
+    }
 }
+
+
+
