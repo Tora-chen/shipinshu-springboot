@@ -13,8 +13,8 @@ public class Note {
     @Column(name="id")
     private Long id;
 
-    @Column(name="img_id")
-    private Long imgId;
+    @Column(name="img_path")
+    private String imgPath;
 
     @Column(name="description", columnDefinition = "TEXT")
     private String description;
