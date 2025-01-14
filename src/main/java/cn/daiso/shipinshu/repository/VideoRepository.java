@@ -7,6 +7,6 @@ import java.util.List;
 
 
 public interface VideoRepository extends JpaRepository<Video, Long> {
-    List<Video> getVideoById(Long id);
+//    List<Video> getVideoById(Long id);
     List<Video> getVideosByLectureId(Long lectureId);
 }
