@@ -52,6 +52,7 @@ public class SecurityConfig {
                         .requestMatchers("/home", "/csrf", "/api/login", "/api/lecture/list").permitAll()
                         .requestMatchers("/api/lectures").hasRole("STUDENT")
                         .requestMatchers("api/lectures/my").hasRole("STUDENT")
+                        .requestMatchers("api/lectures/recommendedLecture").hasRole("STUDENT")
                         .requestMatchers("api/lectures/{lectureId}").hasRole("STUDENT")
                         .requestMatchers("api/lectures/{lectureId}/videos").hasRole("STUDENT")
                         .requestMatchers("/api/user-collection").hasRole("STUDENT")

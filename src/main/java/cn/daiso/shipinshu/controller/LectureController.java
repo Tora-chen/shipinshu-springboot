@@ -10,9 +10,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
+import java.util.ArrayList;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 @RestController
 @RequestMapping("/api/lectures")
@@ -117,6 +119,28 @@ public class LectureController {
 
         // 将视频信息上传
         return ResponseEntity.ok(videos);
+    }
+
+    // 获取推荐课程
+    @GetMapping("/recommendedLecture")
+    public  ResponseEntity<?> findRecommendedLecture(){
+        // 建立列表存储随机获取的课程信息
+        List<Long> allLectures = lectureRepository.findAllIds();
+        List<Lecture> randomLectures = new ArrayList<>();
+        Random random = new Random();
+        int cnt=3;  //推荐三个
+        while(cnt!=0){
+            // 生成随机id
+            long randomLectureId = random.nextLong(allLectures.size()+1);  // 在最大值范围内生成随机id 注意范围需要+1，不然始终无法选择到最后一个（因为数据库中id从1开始）
+            Lecture lecture = lectureRepository.findById(randomLectureId).orElse(null);
+            // 异常处理
+            if (lecture!= null && !randomLectures.contains(lecture)) {
+                randomLectures.add(lecture);
+                cnt--;
+            }
+        }
+
+        return ResponseEntity.ok(randomLectures);
     }
 }
 
