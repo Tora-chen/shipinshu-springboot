@@ -20,4 +20,4 @@ spring:
       mode: always
 
 storage:
-  path: D:/shipinshu-data
+  path: D:/shipinshu_data
