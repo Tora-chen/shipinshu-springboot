@@ -19,6 +19,9 @@ public class Video {
     @Column(name="transcript",nullable = false, columnDefinition = "TEXT")
     private String transcript;
 
+    @Column(name="path", nullable = false)
+    private String path;
+
     // 外键约束
     @ManyToOne // 多个视频对应一个讲座
     @JoinColumn(name = "lecture_id", referencedColumnName = "id")

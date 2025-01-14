@@ -5,19 +5,19 @@ INSERT INTO lecture (id, title, description, uploader_id) VALUES
 (3, '数据库管理', '学习关系型数据库和SQL语句。', 1);
 
 -- Video 表（视频表）
-INSERT INTO video (id, lecture_id, title, transcript) VALUES
-(1, 1, 'Python基础知识1', '欢迎学习Python编程！本节课介绍变量。'),
-(2, 1, 'Python基础知识2', '欢迎学习Python编程！本节课介绍数据类型。'),
-(3, 2, 'Java高级概述1', '本节课深入探讨Java的核心概念。'),
-(4, 2, 'Java高级概述2', '本节课深入探讨Java的核心概念。'),
-(5, 3, 'SQL入门', '学习SQL的基础语法，包括SELECT语句的使用。'),
-(6, 3, 'SQL进阶', '学习SQL的高级语法，包括JOIN语句的使用。');
+INSERT INTO video (id, lecture_id, title, transcript, path) VALUES
+(1, 1, 'Python基础知识1', '欢迎学习Python编程！本节课介绍变量。', '/video/1736818063.mp3'),
+(2, 1, 'Python基础知识2', '欢迎学习Python编程！本节课介绍数据类型。', '/video/1736818063.mp3'),
+(3, 2, 'Java高级概述1', '本节课深入探讨Java的核心概念。', '/video/1736818063.mp3'),
+(4, 2, 'Java高级概述2', '本节课深入探讨Java的核心概念。', '/video/1736818063.mp3'),
+(5, 3, 'SQL入门', '学习SQL的基础语法，包括SELECT语句的使用。', '/video/1736818063.mp3'),
+(6, 3, 'SQL进阶', '学习SQL的高级语法，包括JOIN语句的使用。', '/video/1736818063.mp3');
 
 -- Note 表（笔记表）
-INSERT INTO note (id, description, img_id, video_id) VALUES
-(1, '第1章笔记：变量与数据类型', 1, 1),
-(2, 'Java高级教程笔记：多线程与并发', 2, 2),
-(3, '数据库基础笔记：主键和外键', 3, 3);
+INSERT INTO note (id, description, img_path, video_id) VALUES
+(1, '第1章笔记：变量与数据类型', '/img/1736818063.png', 1),
+(2, 'Java高级教程笔记：多线程与并发', '/img/1736818063.png', 2),
+(3, '数据库基础笔记：主键和外键', '/img/1736818063.png', 3);
 
 -- User 表（用户表）
 INSERT INTO user (id, username, password, salt, display_name) VALUES
