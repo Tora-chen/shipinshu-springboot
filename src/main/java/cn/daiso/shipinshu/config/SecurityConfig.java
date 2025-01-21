@@ -60,7 +60,9 @@ public class SecurityConfig {
                         .requestMatchers("/api/user-collection/my").hasRole("STUDENT")
                         .requestMatchers("/api/videos/{video_id}").hasRole("STUDENT")
                         .requestMatchers("/api/videos/upload").hasRole("STUDENT")
+                        .requestMatchers("/api/notes/{id}").hasRole("STUDENT")
                         .requestMatchers("/api/picture/videoCover/{video_id}").hasRole("STUDENT")
+
 
                         .anyRequest().authenticated()
                 )

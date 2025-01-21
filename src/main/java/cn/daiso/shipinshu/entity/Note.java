@@ -21,4 +21,5 @@ public class Note {
 
     @Column(name="video_id")
     private Long videoId;
+
 }
