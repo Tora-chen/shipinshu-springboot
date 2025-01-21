@@ -2,7 +2,6 @@ package cn.daiso.shipinshu.controller;
 
 import cn.daiso.shipinshu.entity.Video;
 import cn.daiso.shipinshu.repository.VideoRepository;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,8 +15,6 @@ import java.util.Optional;
 @RequestMapping("/api/picture")
 public class PictureController {
     private final VideoRepository videoRepository;
-    @Value("${storage.path}") // 从配置文件中读取存储路径
-    private String storagePath;
 
     public PictureController(VideoRepository videoRepository) {
         this.videoRepository = videoRepository;
@@ -32,9 +29,10 @@ public class PictureController {
             return ResponseEntity.notFound().build();
         }
         Video video = videoInfo.get();
-        String coverPath = storagePath + video.getCoverPath();
-        return ResponseEntity.ok(coverPath);
+        return ResponseEntity.ok(video.getCoverPath());
     }
+
+    // 返回笔记截屏地址
 
 
 }

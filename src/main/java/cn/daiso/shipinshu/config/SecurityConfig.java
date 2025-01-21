@@ -55,12 +55,18 @@ public class SecurityConfig {
                         .requestMatchers("api/lectures/recommendedLecture").hasRole("STUDENT")
                         .requestMatchers("api/lectures/{lectureId}").hasRole("STUDENT")
                         .requestMatchers("api/lectures/{lectureId}/videos").hasRole("STUDENT")
+
                         .requestMatchers("/api/user-collection").hasRole("STUDENT")
                         .requestMatchers("/api/user-collection/{LectureId}").hasRole("STUDENT")
                         .requestMatchers("/api/user-collection/my").hasRole("STUDENT")
+
                         .requestMatchers("/api/videos/{video_id}").hasRole("STUDENT")
                         .requestMatchers("/api/videos/upload").hasRole("STUDENT")
-                        .requestMatchers("/api/notes/{id}").hasRole("STUDENT")
+
+                        .requestMatchers("/api/notes/certainNote/{note_id}").hasRole("STUDENT")
+                        .requestMatchers("/api/notes/videoNotes/{video_id}").hasRole("STUDENT")
+                        .requestMatchers("/api/notes/captions/{video_id}").hasRole("STUDENT")
+
                         .requestMatchers("/api/picture/videoCover/{video_id}").hasRole("STUDENT")
 
 
