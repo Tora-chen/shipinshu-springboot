@@ -15,9 +15,12 @@ INSERT INTO video (id, lecture_id, title, transcript, path,cover_path) VALUES
 
 -- Note 表（笔记表）
 INSERT INTO note (id, description, img_path, video_id) VALUES
-(1, '第1章笔记：变量与数据类型', '/img/db56877bf758e92f813c25705b6d5fc0eed20512.jpg', 1),
-(2, 'Java高级教程笔记：多线程与并发', '/img/db56877bf758e92f813c25705b6d5fc0eed20512.jpg', 2),
-(3, '数据库基础笔记：主键和外键', '/img/db56877bf758e92f813c25705b6d5fc0eed20512.jpg', 3);
+(1, '第1章笔记：变量', '/img/db56877bf758e92f813c25705b6d5fc0eed11111.jpg', 1),
+(2, '第2章笔记：数据类型', '/img/db56877bf758e92f813c25705b6d5fc0eed22222.jpg', 1),
+(3, '第3章笔记：变量与数据类型', '/img/db56877bf758e92f813c25705b6d5fc0eed33333.jpg', 1),
+(4, 'Java高级教程笔记：多线程', '/img/db56877bf758e92f813c25705b6d5fc0eed44444.jpg', 2),
+(5, 'Java高级教程笔记：并发', '/img/db56877bf758e92f813c25705b6d5fc0eed55555.jpg', 2),
+(6, '数据库基础笔记：主键和外键', '/img/db56877bf758e92f813c25705b6d5fc0eed66666.jpg', 3);
 
 -- User 表（用户表）
 INSERT INTO user (id, username, password, salt, display_name) VALUES
@@ -45,3 +48,10 @@ INSERT INTO user_role (id, user_id, role_id) VALUES
 (2, 2, 1); -- 杨佳林是学生
 
 
+-- Caption 表（存放字幕地址和视频对应信息）
+INSERT INTO caption (id, video_id,language,path) VALUES
+(1,1,'Chinese', '/caption/one.txt'),
+(2,1,'English', '/caption/one.txt'),
+(3,2,'English', '/caption/two.txt'),
+(4,2,'Chinese', '/caption/two.txt'),
+(5,3,'Chinese', '/caption/three.txt');
