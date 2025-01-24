@@ -70,7 +70,7 @@ public class SecurityConfig {
 
                         .requestMatchers("/api/picture/videoCover/{video_id}").hasRole("STUDENT")
 
-                        .requestMatchers(HttpMethod.PUT, "/api/captions").hasRole("VIDEO_PROCESSOR")
+                        .requestMatchers(HttpMethod.POST, "/api/captions").hasRole("VIDEO_PROCESSOR")
 
 
 

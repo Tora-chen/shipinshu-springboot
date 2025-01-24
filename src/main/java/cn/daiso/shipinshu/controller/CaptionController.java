@@ -4,10 +4,7 @@ import cn.daiso.shipinshu.entity.Caption;
 import cn.daiso.shipinshu.entity.Video;
 import cn.daiso.shipinshu.repository.*;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 
 import java.util.Map;
@@ -24,7 +21,7 @@ public class CaptionController {
         this.captionRepository = captionRepository;
     }
 
-    @PutMapping("")
+    @PostMapping("")
     public ResponseEntity<String> addCaption(@RequestBody Map<String, String> payload) {
         // 数据库中查询视频
         String video_path = payload.get("video_path");
