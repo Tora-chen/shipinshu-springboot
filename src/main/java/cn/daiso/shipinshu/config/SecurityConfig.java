@@ -4,6 +4,7 @@ import cn.daiso.shipinshu.filter.JwtAuthenticationFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Lazy;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -68,6 +69,9 @@ public class SecurityConfig {
                         .requestMatchers("/api/notes/captions/{video_id}").hasRole("STUDENT")
 
                         .requestMatchers("/api/picture/videoCover/{video_id}").hasRole("STUDENT")
+
+                        .requestMatchers(HttpMethod.POST, "/api/captions").hasRole("VIDEO_PROCESSOR")
+
 
 
                         .anyRequest().authenticated()
