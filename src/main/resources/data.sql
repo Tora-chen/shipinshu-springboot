@@ -6,7 +6,7 @@ INSERT INTO lecture (id, title, description, uploader_id) VALUES
 
 -- Video 表（视频表）
 INSERT INTO video (id, lecture_id, title, transcript, path,cover_path) VALUES
-(1, 1, 'Python基础知识1', '欢迎学习Python编程！本节课介绍变量。', '/video/122452656_da2-1-16.mp4','/img/cover_1.jpg'),
+(1, 1, 'Python基础知识1', '欢迎学习Python编程！本节课介绍变量。', '/video/f87863f3fd3c8ff73641f53a7cc98a67.mp4','/img/cover_1.jpg'),
 (2, 1, 'Python基础知识2', '欢迎学习Python编程！本节课介绍数据类型。', '/video/122452656_da2-1-17.mp4','/img/cover_1.jpg'),
 (3, 2, 'Java高级概述1', '本节课深入探讨Java的核心概念。', '/video/122452656_da2-1-18.mp4','/img/cover_1.jpg'),
 (4, 2, 'Java高级概述2', '本节课深入探讨Java的核心概念。', '/video/122452656_da2-1-19.mp4','/img/cover_1.jpg'),
@@ -14,7 +14,7 @@ INSERT INTO video (id, lecture_id, title, transcript, path,cover_path) VALUES
 (6, 3, 'SQL进阶', '学习SQL的高级语法，包括JOIN语句的使用。', '/video/122452656_da2-1-21.mp4','/img/cover_1.jpg');
 
 -- Note 表（笔记表）
-INSERT INTO note (id, description, img_path, video_id) VALUES
+INSERT INTO note (id, description, image_path, video_id) VALUES
 (1, '第1章笔记：变量', '/img/db56877bf758e92f813c25705b6d5fc0eed11111.jpg', 1),
 (2, '第2章笔记：数据类型', '/img/db56877bf758e92f813c25705b6d5fc0eed22222.jpg', 1),
 (3, '第3章笔记：变量与数据类型', '/img/db56877bf758e92f813c25705b6d5fc0eed33333.jpg', 1),
