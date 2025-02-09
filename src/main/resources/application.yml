@@ -20,7 +20,7 @@ spring:
         format_sql: true
   sql:
     init:
-      data-locations: classpath:data.sql
+      data-locations: classpath:data_v1.sql
       mode: always
 
 storage:
