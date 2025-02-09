@@ -7,7 +7,6 @@ INSERT INTO lecture (id, title, description, uploader_id) VALUES
 -- Video 表（视频表）
 INSERT INTO video (id, lecture_id, title, transcript, path, cover_path) VALUES
 (1, 1, '第0周 Scratch 图形编程', '', '/video/11fed637fe754cf69c7a77173972de61.mp4','/img/67042ae5c3a86de9a30d999eeade92f026f0a644.jpg'),
-(2, 1, '第1周 C 语言',           '', '/video/21fed637fe754cf69c7a77173972de61.mp4','/img/67042ae5c3a86de9a30d999eeade92f026f0a644.jpg'),
 
 (3, 2, '【零基础】1.1 计算机与编程语言', '', '/video/31fed637fe754cf69c7a77173972de61.mp4','/img/c65b5780678482c890b633f8639246333984a9f3.png'),
 (4, 2, '1.2 计算机的思维方式', '',          '/video/41fed637fe754cf69c7a77173972de61.mp4','/img/c65b5780678482c890b633f8639246333984a9f3.png'),
@@ -34,34 +33,18 @@ INSERT INTO note (video_id, image_path, description, timestamp) VALUES
 (1, '/image/d54e7448c95f48ad8d8995ea807bb29b.jpg', '当前内容涉及高级编程语言，如C语言和JavaScript。屏幕上显示的是一个编程环境，可能在讲解代码或编程概念。', 3900),
 (1, '/image/957777d4bd714745a40a9293e44f8b85.jpg', 'PPT上展示了多个大学的标志，包括耶鲁、麻省理工、斯坦福、普林斯顿、宾夕法尼亚大学等。旁边有文字提示“Break it down”，可能在分析这些大学的某些特征或排名。', 4200),
 
-(2, '/image/07974ee9fed141ba813ce536c7b1c0e6.jpg', '图中显示的是一个演讲场景，讲台上有一位演讲者，背景屏幕上展示了一张图表，图中有一条红线。字幕显示“回想一下这根红线”，可能在讨论某个重要数据或趋势。', 300),
-(2, '/image/08fee6be63fb4ba5b4d37416d21bfdb7.jpg', '图中没有板书或PPT内容。字幕显示：“但其实我们做的也没错 but we did it correctly arguably.”', 600),
-(2, '/image/8f93404fc85f41f49fafb71eb956201f.jpg', '板书列出了多个编程命令，如“print”、“if”、“else”等，可能在讲解编程基础或逻辑结构。', 900),
-(2, '/image/bc5f402472114cb682a4c0da514b7579.jpg', '图中展示了两种语言的“Hello, World”示例：一种类似自然语言的简单命令“say hello, world”，另一种是C语言代码“printf("hello, world\n");”。字幕提到这类似于英语或其他语言中的句号。', 1200),
-(2, '/image/60cc4b2f7dba4c8c853df552f91fdd63.jpg', '板书展示了一段C语言代码，包含一个if语句，用于比较变量x和y的大小。如果x小于y，则输出“x is less than y”。', 1500),
-(2, '/image/4c099fb61f894c97b7e8c0646449dc07.jpg', '当前内容是关于将信息并列排列。', 1800),
-(2, '/image/4923508e1026441f997010319c20d83b.jpg', '当前PPT展示了一个Python代码示例，代码中包含一个函数定义，函数名为`printTwice`，用于打印两次传入的字符串。', 2100),
-(2, '/image/099de0c95dbd4de198a93214ba5fe215.jpg', '屏幕上显示了一段代码，用于打印数字1到10。代码包含一个for循环，循环变量为i，范围从1到10。', 2400),
-(2, '/image/72928ee669b04163b38eab672998e178.jpg', '图中展示了Scratch编程中的代码块，包括“询问并等待”和“说”功能。通过“join”代码块将“hello”和用户回答连接，实现对话功能。字幕提到在C语言中也使用了类似的“join”代码块。', 2700),
-(2, '/image/fdd30252a0ee466fa6ebfb75ea754453.jpg', '图中展示了一个C语言代码示例，代码中包含`#include <stdio.h>`和`int main(void)`函数。下方终端显示了代码的输出结果“hello, world\n”。', 3000),
-(2, '/image/6e4fee7add6448d6a093736611867c3c.jpg', '当前内容描述：演讲者正在讨论他现在可以访问的服务器权限。', 3300),
-(2, '/image/beec668a629442bca332743052896153.jpg', '屏幕上显示的是C语言代码示例，包含`#include <stdio.h>`和`int main()`函数，使用`printf`输出“hello, world”。终端窗口展示了编译和运行命令。', 3600),
-(2, '/image/e345a0b97b584db29d1156cc419a0025.jpg', '屏幕上显示的是C++代码结构，包括变量声明、函数定义和循环结构。代码涉及变量初始化、函数调用和条件判断。', 3900),
-(2, '/image/b4e5a141bb114a829f61d1d40a07ab18.jpg', '代码示例展示了一个简单的C程序，用于获取用户输入并输出问候语。程序包含头文件`<cs50.h>`和`<stdio.h>`，使用`get_string`函数获取输入，并通过`printf`输出结果。终端显示编译和运行命令。', 4200),
-(2, '/image/87f631c60403403dbbf841fd4a2eb617.jpg', '图中没有显示板书或PPT内容。', 4500),
-(2, '/image/86bc4a715a184905bdd55a7095d3fa0c.jpg', '代码示例展示了如何使用`get_int`函数获取用户输入的整数，并用`printf`输出。字幕提到“就像我们给Brian传递一个参数一样”，可能在讲解函数参数传递的概念。', 4800),
-(2, '/image/e95b0851d9b34b449bef85bfab11ec2c.jpg', '代码示例展示了如何从用户获取两个整数并进行基本算术运算。包括加法、减法、乘法和除法，使用`printf`函数输出结果。', 5100),
-(2, '/image/9aa037fa33274a87af3e07b8450f633a.jpg', '代码示例展示了如何从用户获取浮点数输入并进行除法运算。使用`get_float`函数获取变量`x`和`y`，然后通过`printf`格式化输出结果，保留一位小数。', 5400),
-(2, '/image/9e899af7051b401d8678e737ae67240e.jpg', '代码示例展示了如何进行除法运算，使用`printf`函数输出结果。字幕提到计算机系统在计算金额时忽略了分的零头。', 5700),
-(2, '/image/81455c7404034c83b1dbb264ffc701f5.jpg', '代码示例展示了条件语句的使用。当变量x等于y时，输出“x is equal to y”。终端显示运行结果，x为2，y为10。字幕解释了变量赋值。', 6000),
-(2, '/image/5a9ed84758594a619d4953cbef367a3c.jpg', '代码展示了一个循环调用`cough`函数，该函数不接受任何输入。字幕说明当前`cough`函数不需要输入。', 6300),
-(2, '/image/865eda10236045778f033e1f08d073c2.jpg', '代码展示了一个简单的C程序，包含`main`函数和`cough`函数。`main`函数中循环调用`cough`函数三次，`cough`函数输出“cough”。终端显示编译和运行命令。', 6600),
-(2, '/image/a14a07bdb39140e6a4484823876daf29.jpg', '代码示例：提示用户输入正整数。函数`get_positive_int`通过`do-while`循环不断获取用户输入，直到输入大于等于1的整数。', 6900),
-(2, '/image/aee0c9ccdcb84549b6831349ee365dc5.jpg', '屏幕上显示数字“111”，字幕提到“对应1的列、对应2的列、对应4的列”。这可能是在讲解二进制或列优先存储相关内容。', 7200),
-(2, '/image/ce51c159b3e7429099dc4fe9df857cba.jpg', '代码演示整数溢出问题。终端显示程序输出结果，每次输出值翻倍。字幕解释每次翻倍增加的量更多。', 7500),
-(2, '/image/396e54a3d79b47818c2cf962830cb217.jpg', '图中展示了一位演讲者在讲台上，背景屏幕上显示了一幅游戏画面，画面中有三个角色。字幕提到“甘地在游戏中并不是一个和平的角色”。', 7800),
+(3, '/image/2357c31501ee443aaf61cdcca9567c57.jpg', 'PPT标题为“计算机的语言”，展示了一段十六进制代码。', 300),
 
-(3, '/image/2357c31501ee443aaf61cdcca9567c57.jpg', 'PPT标题为“计算机的语言”，展示了一段十六进制代码。', 300);
+(6, '/image/8be75b19ddec4c6b923f86470c5019f5.jpg', '板书内容涉及数学课程，提到“宋浩”和“宋浩老师_ice_mouse”。还提到“站：so...aobigmouse”，以及“微积分”和“概率与数理统计”。', 300),
+(6, '/image/4e10955bbe504103b476291e41d82c2a.jpg', '板书内容包括社交媒体账号、B站用户名、书籍名称、学校和机构名称等信息。', 600),
+(6, '/image/aeca2c312716436ca5fd415ee6e086bd.jpg', '板书内容涉及社交媒体账号、书籍和教育机构信息，包括微博、B站账号、书籍名称、大学和学院名称等。', 900),
+(6, '/image/bb3772ae922048158d79441170e79cdb.jpg', '板书内容涉及数学课程，提到“高等数学”、“线性代数”、“概率统计”等课程。还提到“山大数学”、“中科院”、“英国Queen Mary”等信息，可能与课程背景或教师经历相关。', 1200),
+(6, '/image/af2f461c832c4666a4ddf9e28a6f10e1.jpg', '板书内容涉及数学相关主题，包括线性代数、概率统计等。提到了一些社交媒体账号和书籍，如“Song hao big mouse”和“Queen Mary”。还涉及函数、方程和概率等数学概念。', 1500),
+(6, '/image/826aae3e1aeb46eb8391820d29367657.jpg', '板书讲解函数的基本概念，包括定义域、值域、映射与函数关系。定义域为X，值域为Y，映射f: X→Y。强调函数的对应关系和元素的约束。', 1800),
+(6, '/image/88c6e08a69644cdb8cf26b763656584f.jpg', '板书内容涉及函数映射关系，定义域、值域和对应关系。图中有函数图像和映射示例，强调单射、满射和双射的概念。', 2100),
+(6, '/image/1c754621a702480b84ad68edfc2276f1.jpg', '板书内容涉及函数、映射和关系的概念。包括定义域、值域、单射、满射和双射等术语，图示展示了映射关系。', 2400),
+(6, '/image/d4f06f58e4064fe891f318cd35769b54.jpg', '板书讲解函数映射的概念，包括单射、满射和复合映射。定义了集合 \(X\)、\(Y\)、\(Z\) 及函数 \(f\)、\(g\)、\(R_f\)。图示展示了映射关系，强调了单射和满射的条件。', 2700);
+
 -- 其他视频的笔记暂时设置为空缺，以测试笔记空缺时的显示
 
 
@@ -69,7 +52,7 @@ INSERT INTO note (video_id, image_path, description, timestamp) VALUES
 INSERT INTO caption (id, video_id,language,path) VALUES
 (1,1,'zh-CN', '/caption/11fed637fe754cf69c7a77173972de61.srt'),
 (2,2,'zh-CN', '/caption/21fed637fe754cf69c7a77173972de61.srt'),
-(3,2,'zh-CN', '/caption/31fed637fe754cf69c7a77173972de61.srt');
+(3,6,'zh-CN', '/caption/61fed637fe754cf69c7a77173972de61.srt');
 
 -- User 表（用户表）
 INSERT INTO user (id, username, password, salt, display_name) VALUES
