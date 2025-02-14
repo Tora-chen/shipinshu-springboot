@@ -51,7 +51,6 @@ INSERT INTO note (video_id, image_path, description, timestamp) VALUES
 -- Caption 表（存放字幕地址和视频对应信息）
 INSERT INTO caption (id, video_id,language,path) VALUES
 (1,1,'zh-CN', '/caption/11fed637fe754cf69c7a77173972de61.srt'),
-(2,2,'zh-CN', '/caption/21fed637fe754cf69c7a77173972de61.srt'),
 (3,6,'zh-CN', '/caption/61fed637fe754cf69c7a77173972de61.srt');
 
 -- User 表（用户表）
