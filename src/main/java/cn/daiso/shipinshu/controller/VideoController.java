@@ -60,7 +60,10 @@ public class VideoController {
 //    2. 没有保证操作的原子性，如果视频上传成功但是数据库操作失败，会导致视频无法被访问，也无法被删除；
 //
     @PostMapping("/upload")
-    public ResponseEntity<String> uploadVideo(@RequestParam("file") MultipartFile file, @RequestParam("lecture_id")String lectureId) {
+    public ResponseEntity<String> uploadVideo(@RequestParam("file") MultipartFile file,
+                                              @RequestParam("lecture_id")String lectureId,
+                                              @RequestParam("title")String title,
+                                              @RequestParam(value = "transcript", defaultValue = "") String transcript) {
         try {
             // 检查文件格式是否为mp4, 不是则返回400和提示信息
             if (!Objects.equals(file.getContentType(), "video/mp4")) {
@@ -91,7 +94,8 @@ public class VideoController {
             video.setTitle(file.getOriginalFilename());
             video.setLecture(lecture.get());
             video.setPath(relativePath);
-            video.setTranscript("暂无字幕");
+            video.setTitle(title);
+            video.setTranscript(transcript);
             videoRepository.save(video);
 
             return ResponseEntity.ok("Success!");
