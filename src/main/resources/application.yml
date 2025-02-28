@@ -3,6 +3,11 @@ spring:
     multipart:
       max-file-size: 500MB
       max-request-size: 500MB
+
+  web:
+    resources:
+      static-locations: file:D:/shipinshu_data/
+
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/shipinshu?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC
