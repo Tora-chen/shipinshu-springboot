@@ -27,7 +27,7 @@ public class UserCollectionController {
         this.lectureRepository = lectureRepository;
     }
 
-    // 收藏课程
+    // 收藏课程（bug 点击两遍收藏会在数据库中添加两遍，而不是取消）
     @PostMapping("")
     public ResponseEntity<String> collectLecture(@RequestBody Map<String, String> payload) {
         Long lectureId = Long.valueOf(payload.get("lectureId"));

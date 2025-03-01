@@ -9,4 +9,5 @@ import java.util.List;
 public interface CaptionRepository extends JpaRepository<Caption, Long> {
     // List<Note> getCaptionById(Long id);
     List<Caption> findAllByVideoId(Long id);
+    void deleteByVideoId(Long videoId);
 }
