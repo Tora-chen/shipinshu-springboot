@@ -39,9 +39,8 @@ public class UserCollectionController {
         UserCollection existingCollection = userCollectionRepository.findByUserIdAndLectureId(userId, lectureId);
     
         if (existingCollection != null) {
-            // 如果已经收藏，则取消收藏（删除记录）
-            userCollectionRepository.delete(existingCollection);
-            return ResponseEntity.ok("Lecture uncollected successfully!");
+            // 如果已经收藏，则返回已经收藏
+            return ResponseEntity.ok("Lecture has already collected successfully!");
         } else {
             // 如果没有收藏，则添加收藏记录
             UserCollection userCollection = new UserCollection();
