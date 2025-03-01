@@ -2,6 +2,7 @@ package cn.daiso.shipinshu.controller;
 
 import cn.daiso.shipinshu.entity.Lecture;
 import cn.daiso.shipinshu.repository.LectureRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
@@ -103,4 +104,21 @@ public class VideoController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
+
+
+    // 删除视频(待完善)
+//    @DeleteMapping("/{video_id}")
+//    @Transactional
+//    public ResponseEntity<String> deleteVideo(@PathVariable String video_id) {
+//        Optional<Video> videoOptional = videoRepository.findById(Long.valueOf(video_id));
+//        if (videoOptional.isEmpty()) {
+//            return ResponseEntity.notFound().build();
+//        }
+//        Video video = videoOptional.get();
+//        String relativePath = video.getPath();
+//        String absolutePath = storagePath + relativePath;
+//        File videoFile = new File(absolutePath);
+//        return ;
+//    }
+
 }
