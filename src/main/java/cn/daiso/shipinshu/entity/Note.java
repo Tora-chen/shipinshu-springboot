@@ -13,11 +13,14 @@ public class Note {
     @Column(name="id")
     private Long id;
 
-    @Column(name="img_path")
-    private String imgPath;
+    @Column(name="image_path")
+    private String imagePath;
 
     @Column(name="description", columnDefinition = "TEXT")
     private String description;
+
+    @Column(name="timestamp")
+    private String timestamp;
 
     @Column(name="video_id")
     private Long videoId;

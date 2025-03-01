@@ -5,16 +5,17 @@ INSERT INTO lecture (id, title, description, uploader_id,cover_path) VALUES
 (3, '数据库管理', '学习关系型数据库和SQL语句。', 1,"/img/Lcover_3.jpg");
 
 -- Video 表（视频表）
-INSERT INTO video (id, lecture_id, title, transcript, path) VALUES
-(1, 1, 'Python基础知识1', '欢迎学习Python编程！本节课介绍变量。', '/video/122452656_da2-1-16.mp4'),
-(2, 1, 'Python基础知识2', '欢迎学习Python编程！本节课介绍数据类型。', '/video/122452656_da2-1-16.mp4'),
-(3, 2, 'Java高级概述1', '本节课深入探讨Java的核心概念。', '/video/122452656_da2-1-16.mp4'),
-(4, 2, 'Java高级概述2', '本节课深入探讨Java的核心概念。', '/video/122452656_da2-1-16.mp4'),
-(5, 3, 'SQL入门', '学习SQL的基础语法，包括SELECT语句的使用。', '/video/122452656_da2-1-16.mp4'),
-(6, 3, 'SQL进阶', '学习SQL的高级语法，包括JOIN语句的使用。', '/video/122452656_da2-1-16.mp4');
+INSERT INTO video (id, lecture_id, title, transcript, path,cover_path) VALUES
+(1, 1, 'Python基础知识1', '欢迎学习Python编程！本节课介绍变量。', '/video/f87863f3fd3c8ff73641f53a7cc98a67.mp4','/img/cover_1.jpg'),
+(2, 1, 'Python基础知识2', '欢迎学习Python编程！本节课介绍数据类型。', '/video/122452656_da2-1-17.mp4','/img/cover_1.jpg'),
+(3, 2, 'Java高级概述1', '本节课深入探讨Java的核心概念。', '/video/122452656_da2-1-18.mp4','/img/cover_1.jpg'),
+(4, 2, 'Java高级概述2', '本节课深入探讨Java的核心概念。', '/video/122452656_da2-1-19.mp4','/img/cover_1.jpg'),
+(5, 3, 'SQL入门', '学习SQL的基础语法，包括SELECT语句的使用。', '/video/122452656_da2-1-20.mp4','/img/cover_1.jpg'),
+(6, 3, 'SQL进阶', '学习SQL的高级语法，包括JOIN语句的使用。', '/video/122452656_da2-1-21.mp4','/img/cover_1.jpg');
+
 
 -- Note 表（笔记表）
-INSERT INTO note (id, description, img_path, video_id) VALUES
+INSERT INTO note (id, description, image_path, video_id) VALUES
 (1, '第1章笔记：变量', '/img/db56877bf758e92f813c25705b6d5fc0eed11111.jpg', 1),
 (2, '第2章笔记：数据类型', '/img/db56877bf758e92f813c25705b6d5fc0eed22222.jpg', 1),
 (3, '第3章笔记：变量与数据类型', '/img/db56877bf758e92f813c25705b6d5fc0eed33333.jpg', 1),
@@ -25,11 +26,13 @@ INSERT INTO note (id, description, img_path, video_id) VALUES
 -- User 表（用户表）
 INSERT INTO user (id, username, password, salt, display_name) VALUES
 (1, 'chenzhihu', '$2a$10$THH81g1z6la5SZ9sxSZdauUEjvuPClkdaLwiVI97kxLL4i5oItKdW', '', '陈志虎'),
-(2, 'yangjialin', '$2a$10$THH81g1z6la5SZ9sxSZdauUEjvuPClkdaLwiVI97kxLL4i5oItKdW', '', '杨佳林');
+(2, 'yangjialin', '$2a$10$THH81g1z6la5SZ9sxSZdauUEjvuPClkdaLwiVI97kxLL4i5oItKdW', '', '杨佳林'),
+(3, 'video_processor', '$2a$10$THH81g1z6la5SZ9sxSZdauUEjvuPClkdaLwiVI97kxLL4i5oItKdW', '', 'video_processor');
 
 -- Role 表（角色表）
 INSERT INTO role (id, name) VALUES
-(1, 'ROLE_STUDENT');
+(1, 'ROLE_STUDENT'),
+(2, 'ROLE_VIDEO_PROCESSOR');
 
 -- User_Collection 表（用户收藏表）
 INSERT INTO user_collection (id, user_id, lecture_id) VALUES
@@ -45,7 +48,8 @@ INSERT INTO user_lecture (id, user_id, lecture_id) VALUES
 -- User_Role 表（用户角色表）
 INSERT INTO user_role (id, user_id, role_id) VALUES
 (1, 1, 1), -- 陈志虎是学生
-(2, 2, 1); -- 杨佳林是学生
+(2, 2, 1), -- 杨佳林是学生
+(3, 3, 2); -- video_processor是视频处理器
 
 
 -- Caption 表（存放字幕地址和视频对应信息）
