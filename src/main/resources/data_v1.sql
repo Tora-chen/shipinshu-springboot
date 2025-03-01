@@ -1,20 +1,20 @@
 -- Lecture 表（课程表）
-INSERT INTO lecture (id, title, description, uploader_id) VALUES
-(1, 'CS50 哈佛大学 计算机科学导论 名校公开课【合集·完结】', 'CS50是哈佛大学校内以及 MOOC 平台 edX 上学习人数最多的计算机课程，内容包括：C语言，数据结构、算法，Python (Flask)，前后端网站开发等。', 1),
-(2, '【浙江大学】Java入门与进阶 翁恺', 'https://mooc.study.163.com/course/ 翁恺老师的精品课之一', 1),
-(3, '《高等数学》同济版 2024年更新|宋浩老师', '《高等数学》同济版 宋浩老师 新浪微博：宋浩老师_ice_mouse；下册开始更新新视频了，在专辑的最底部，跟随课堂进度录制。', 2);
+INSERT INTO lecture (id, title, description, uploader_id,cover_path) VALUES
+(1, 'CS50 哈佛大学 计算机科学导论 名校公开课【合集·完结】', 'CS50是哈佛大学校内以及 MOOC 平台 edX 上学习人数最多的计算机课程，内容包括：C语言，数据结构、算法，Python (Flask)，前后端网站开发等。', 1,"3e2ab90a-cafb-4d4b-879b-3e57a758de18.jpg"),
+(2, '【浙江大学】Java入门与进阶 翁恺', 'https://mooc.study.163.com/course/ 翁恺老师的精品课之一', 1,"3e2ab90a-cafb-4d4b-879b-3e57a758de18.jpg"),
+(3, '《高等数学》同济版 2024年更新|宋浩老师', '《高等数学》同济版 宋浩老师 新浪微博：宋浩老师_ice_mouse；下册开始更新新视频了，在专辑的最底部，跟随课堂进度录制。', 2,"3e2ab90a-cafb-4d4b-879b-3e57a758de18.jpg");
 
 -- Video 表（视频表）
-INSERT INTO video (id, lecture_id, title, transcript, path, cover_path) VALUES
-(1, 1, '第0周 Scratch 图形编程', '', '/video/11fed637fe754cf69c7a77173972de61.mp4','/img/67042ae5c3a86de9a30d999eeade92f026f0a644.jpg'),
+INSERT INTO video (id, lecture_id, title, transcript, path) VALUES
+(1, 1, '第0周 Scratch 图形编程', '', '/video/11fed637fe754cf69c7a77173972de61.mp4'),
 
-(3, 2, '【零基础】1.1 计算机与编程语言', '', '/video/31fed637fe754cf69c7a77173972de61.mp4','/img/c65b5780678482c890b633f8639246333984a9f3.png'),
-(4, 2, '1.2 计算机的思维方式', '',          '/video/41fed637fe754cf69c7a77173972de61.mp4','/img/c65b5780678482c890b633f8639246333984a9f3.png'),
-(5, 2, '1.3 准备Java编程软件', '',          '/video/51fed637fe754cf69c7a77173972de61.mp4','/img/c65b5780678482c890b633f8639246333984a9f3.png'),
+(3, 2, '【零基础】1.1 计算机与编程语言', '', '/video/31fed637fe754cf69c7a77173972de61.mp4'),
+(4, 2, '1.2 计算机的思维方式', '',          '/video/41fed637fe754cf69c7a77173972de61.mp4'),
+(5, 2, '1.3 准备Java编程软件', '',          '/video/51fed637fe754cf69c7a77173972de61.mp4'),
 
-(6, 3, '1.1 映射', '',          '/video/61fed637fe754cf69c7a77173972de61.mp4','/img/video/db56877bf758e92f813c25705b6d5fc0eed20512.jpg'),
-(7, 3, '1.1 函数', '',          '/video/71fed637fe754cf69c7a77173972de61.mp4','/img/video/db56877bf758e92f813c25705b6d5fc0eed20512.jpg'),
-(8, 3, '1.1 函数的几种特性', '', '/video/81fed637fe754cf69c7a77173972de61.mp4','/img/video/db56877bf758e92f813c25705b6d5fc0eed20512.jpg');
+(6, 3, '1.1 映射', '',          '/video/61fed637fe754cf69c7a77173972de61.mp4'),
+(7, 3, '1.1 函数', '',          '/video/71fed637fe754cf69c7a77173972de61.mp4'),
+(8, 3, '1.1 函数的几种特性', '', '/video/81fed637fe754cf69c7a77173972de61.mp4');
 
 -- Note 表（笔记表）
 INSERT INTO note (video_id, image_path, description, timestamp) VALUES
