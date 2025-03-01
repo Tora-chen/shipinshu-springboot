@@ -1,4 +1,6 @@
 package cn.daiso.shipinshu.controller;
+import org.springframework.web.reactive.function.client.WebClient;
+import reactor.core.publisher.Mono;
 
 import cn.daiso.shipinshu.entity.Lecture;
 import cn.daiso.shipinshu.repository.CaptionRepository;
@@ -18,6 +20,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/videos")
@@ -101,6 +105,25 @@ public class VideoController {
             video.setTitle(title);
             video.setTranscript(transcript);
             videoRepository.save(video);
+
+
+            // 发送请求给Flask
+            WebClient webClient = WebClient.builder().baseUrl("http://localhost:5000").build();
+
+            // 1. 构造请求体
+            Map<String, String> requestBody = new HashMap<>();
+            requestBody.put("video_path", relativePath);
+
+            // 2. 发送 POST 请求
+            Mono<String> responseMono = webClient.post()
+                    .uri("/api/process-video")
+                    .bodyValue(requestBody)
+                    .retrieve()
+                    .bodyToMono(String.class);
+
+            // 3. 处理响应
+            responseMono.subscribe(response -> System.out.println("Response: " + response));
+
 
             return ResponseEntity.ok("Success!");
         } catch (Exception e) {
