@@ -20,4 +20,7 @@ public class Lecture {
 
     @Column(name="uploader_id", nullable = false)
     private  Long uploaderId;
+
+    @Column(name="cover_path", nullable = false)
+    private  String coverPath;
 }

@@ -22,9 +22,6 @@ public class Video {
     @Column(name="path", nullable = false)
     private String path;
 
-    @Column(name="cover_path", nullable = false)
-    private String coverPath;
-
     // 外键约束
     @ManyToOne // 多个视频对应一个讲座
     @JoinColumn(name = "lecture_id", referencedColumnName = "id")

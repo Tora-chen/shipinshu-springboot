@@ -1,8 +1,8 @@
 -- Lecture 表（课程表）
-INSERT INTO lecture (id, title, description, uploader_id) VALUES
-(1, 'Python入门教程', '学习Python编程的基础知识。', 1),
-(2, 'Java高级教程', '深入探讨Java的高级概念和框架。', 1),
-(3, '数据库管理', '学习关系型数据库和SQL语句。', 1);
+INSERT INTO lecture (id, title, description, uploader_id,cover_path) VALUES
+(1, 'Python入门教程', '学习Python编程的基础知识。', 1,"/img/Lcover_1.jpg"),
+(2, 'Java高级教程', '深入探讨Java的高级概念和框架。', 1,"/img/Lcover_2.jpg"),
+(3, '数据库管理', '学习关系型数据库和SQL语句。', 1,"/img/Lcover_3.jpg");
 
 -- Video 表（视频表）
 INSERT INTO video (id, lecture_id, title, transcript, path,cover_path) VALUES
@@ -12,6 +12,7 @@ INSERT INTO video (id, lecture_id, title, transcript, path,cover_path) VALUES
 (4, 2, 'Java高级概述2', '本节课深入探讨Java的核心概念。', '/video/122452656_da2-1-19.mp4','/img/cover_1.jpg'),
 (5, 3, 'SQL入门', '学习SQL的基础语法，包括SELECT语句的使用。', '/video/122452656_da2-1-20.mp4','/img/cover_1.jpg'),
 (6, 3, 'SQL进阶', '学习SQL的高级语法，包括JOIN语句的使用。', '/video/122452656_da2-1-21.mp4','/img/cover_1.jpg');
+
 
 -- Note 表（笔记表）
 INSERT INTO note (id, description, image_path, video_id) VALUES
