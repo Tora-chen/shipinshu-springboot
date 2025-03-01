@@ -1,6 +1,7 @@
 package cn.daiso.shipinshu.controller;
 
 import cn.daiso.shipinshu.entity.Lecture;
+import cn.daiso.shipinshu.repository.CaptionRepository;
 import cn.daiso.shipinshu.repository.LectureRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Value;
@@ -26,10 +27,12 @@ public class VideoController {
     private String storagePath;
 
     private final VideoRepository videoRepository;
+    private final CaptionRepository captionRepository;
 
-    public VideoController(VideoRepository videoRepository, LectureRepository lectureRepository) {
+    public VideoController(VideoRepository videoRepository, LectureRepository lectureRepository,CaptionRepository captionRepository) {
         this.videoRepository = videoRepository;
         this.lectureRepository = lectureRepository;
+        this.captionRepository = captionRepository;
     }
 
 
@@ -106,19 +109,37 @@ public class VideoController {
     }
 
 
-    // 删除视频(待完善)
-//    @DeleteMapping("/{video_id}")
-//    @Transactional
-//    public ResponseEntity<String> deleteVideo(@PathVariable String video_id) {
-//        Optional<Video> videoOptional = videoRepository.findById(Long.valueOf(video_id));
-//        if (videoOptional.isEmpty()) {
-//            return ResponseEntity.notFound().build();
-//        }
-//        Video video = videoOptional.get();
-//        String relativePath = video.getPath();
-//        String absolutePath = storagePath + relativePath;
-//        File videoFile = new File(absolutePath);
-//        return ;
-//    }
+    // 删除视频(待完善——用户可以删除不是自己上传的课程)  删除视频有外键约束，需要先删除caption中的内容
+    @DeleteMapping("/{video_id}")
+    @Transactional
+    public ResponseEntity<String> deleteVideo(@PathVariable String video_id) {
+        Optional<Video> videoOptional = videoRepository.findById(Long.valueOf(video_id));
+        if (videoOptional.isEmpty()) {
+            return ResponseEntity.notFound().build();
+        }
+        Video video = videoOptional.get();
+        String relativePath = video.getPath();
+        String absolutePath = storagePath + relativePath;
+        File videoFile = new File(absolutePath);
+
+        try {
+            // 先删除 caption 表中关联的记录
+            captionRepository.deleteByVideoId(video.getId());
+            // 删除视频文件
+            if (videoFile.exists()) {
+                if (!videoFile.delete()) {
+                    throw new RuntimeException("Failed to delete video file");
+                }
+            }
+
+            // 删除数据库记录
+            videoRepository.delete(video);
+
+            return ResponseEntity.ok("Video deleted successfully");
+        } catch (Exception e) {
+            // 回滚数据库操作
+            throw new RuntimeException("Failed to delete video: " + e.getMessage());
+        }
+    }
 
 }

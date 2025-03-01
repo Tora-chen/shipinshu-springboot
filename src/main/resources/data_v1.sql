@@ -1,8 +1,8 @@
 -- Lecture 表（课程表）
 INSERT INTO lecture (id, title, description, uploader_id,cover_path) VALUES
-(1, 'CS50 哈佛大学 计算机科学导论 名校公开课【合集·完结】', 'CS50是哈佛大学校内以及 MOOC 平台 edX 上学习人数最多的计算机课程，内容包括：C语言，数据结构、算法，Python (Flask)，前后端网站开发等。', 1,"3e2ab90a-cafb-4d4b-879b-3e57a758de18.jpg"),
-(2, '【浙江大学】Java入门与进阶 翁恺', 'https://mooc.study.163.com/course/ 翁恺老师的精品课之一', 1,"3e2ab90a-cafb-4d4b-879b-3e57a758de18.jpg"),
-(3, '《高等数学》同济版 2024年更新|宋浩老师', '《高等数学》同济版 宋浩老师 新浪微博：宋浩老师_ice_mouse；下册开始更新新视频了，在专辑的最底部，跟随课堂进度录制。', 2,"3e2ab90a-cafb-4d4b-879b-3e57a758de18.jpg");
+(1, 'CS50 哈佛大学 计算机科学导论 名校公开课【合集·完结】', 'CS50是哈佛大学校内以及 MOOC 平台 edX 上学习人数最多的计算机课程，内容包括：C语言，数据结构、算法，Python (Flask)，前后端网站开发等。', 1,"67042ae5c3a86de9a30d999eeade92f026f0a644.jpg"),
+(2, '【浙江大学】Java入门与进阶 翁恺', 'https://mooc.study.163.com/course/ 翁恺老师的精品课之一', 1,"2357c31501ee443aaf61cdcca9567c57.jpg"),
+(3, '《高等数学》同济版 2024年更新|宋浩老师', '《高等数学》同济版 宋浩老师 新浪微博：宋浩老师_ice_mouse；下册开始更新新视频了，在专辑的最底部，跟随课堂进度录制。', 2,"db56877bf758e92f813c25705b6d5fc0eed20512.jpg");
 
 -- Video 表（视频表）
 INSERT INTO video (id, lecture_id, title, transcript, path) VALUES
