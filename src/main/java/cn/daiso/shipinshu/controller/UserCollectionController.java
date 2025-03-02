@@ -41,16 +41,17 @@ public class UserCollectionController {
         if (existingCollection != null) {
             // 如果已经收藏，则返回已经收藏
             return ResponseEntity.ok("Lecture has already collected successfully!");
-        } else {
-            // 如果没有收藏，则添加收藏记录
-            UserCollection userCollection = new UserCollection();
-            userCollection.setUserId(userId);
-            userCollection.setLectureId(lectureId);
-
-            // 保存收藏记录
-            userCollectionRepository.save(userCollection);
-            return ResponseEntity.ok("Lecture collected successfully!");
         }
+        
+        // 如果没有收藏，则添加收藏记录
+        UserCollection userCollection = new UserCollection();
+        userCollection.setUserId(userId);
+        userCollection.setLectureId(lectureId);
+
+        // 保存收藏记录
+        userCollectionRepository.save(userCollection);
+        return ResponseEntity.ok("Lecture collected successfully!");
+        
     }
 
 
