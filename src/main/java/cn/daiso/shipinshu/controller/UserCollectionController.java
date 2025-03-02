@@ -33,8 +33,17 @@ public class UserCollectionController {
         Long lectureId = Long.valueOf(payload.get("lectureId"));
         Long userId = SecurityUtil.getCurrentUserId(userRepository);
 
-        System.out.println("用户 " + userId + " 收藏了课程 " + lectureId);
+        System.out.println("用户 " + userId + " 试图收藏课程 " + lectureId);
 
+        // 查找是否已经有收藏记录
+        UserCollection existingCollection = userCollectionRepository.findByUserIdAndLectureId(userId, lectureId);
+    
+        if (existingCollection != null) {
+            // 如果已经收藏，则返回已经收藏
+            return ResponseEntity.ok("Lecture has already collected successfully!");
+        }
+        
+        // 如果没有收藏，则添加收藏记录
         UserCollection userCollection = new UserCollection();
         userCollection.setUserId(userId);
         userCollection.setLectureId(lectureId);
@@ -42,7 +51,9 @@ public class UserCollectionController {
         // 保存收藏记录
         userCollectionRepository.save(userCollection);
         return ResponseEntity.ok("Lecture collected successfully!");
+        
     }
+
 
     // 取消收藏
     @DeleteMapping("/{lectureId}")
